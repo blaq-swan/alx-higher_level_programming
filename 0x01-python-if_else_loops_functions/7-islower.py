@@ -2,8 +2,7 @@
 
 
 def islower(c):
-    string = [chr(a) for a in range(97, 123)]
-    if c in string and c.isalpha():
+    if ord(c) in range(97, 123):
         return True
     else:
         return False
