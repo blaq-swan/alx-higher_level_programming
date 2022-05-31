@@ -2,7 +2,8 @@
 
 
 def islower(c):
-    if c == c.lower():
+    string = [chr(a) for a in range(97, 123)]
+    if c in string:
         return True
     else:
         return False
