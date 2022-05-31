@@ -8,11 +8,11 @@ def zero_positive_or_negative(n):
     prints a number is positive, negative, or zero
     """
     if n == 0:
-        return f"{numbber:d} is zero"
+        return f"{n:d} is zero"
     elif n > 1:
-        return f"{number:d} is positive"
+        return f"{n:d} is positive"
     else:
-        return f"{number:d} is negative"
+        return f"{n:d} is negative"
 
 
 if __name__ == "__main__":
