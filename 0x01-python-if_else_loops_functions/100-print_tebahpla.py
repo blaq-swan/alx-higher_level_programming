@@ -5,4 +5,4 @@ for x in reversed(range(97, 123)):
         x = chr(x)
     else:
         x = chr(x).upper()
-    print(x, end="")
+    print("{}".format(x), end="")
