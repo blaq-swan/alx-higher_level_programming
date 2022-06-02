@@ -2,8 +2,7 @@
 
 from sys import argv as args
 
-
-def commandline_args():
+if __name__ == "__main__":
     if len(args) < 2:
         print("{} arguments.".format(0))
     elif len(args) == 2:
@@ -14,6 +13,3 @@ def commandline_args():
         print("{} arguments:".format(len(args[1:])))
         for count, arg in enumerate(args[1:], start=1):
             print("{}: {}".format(count, arg))
-
-
-commandline_args()
