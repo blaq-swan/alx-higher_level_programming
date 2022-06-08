@@ -3,8 +3,11 @@
 def best_score(a_dictionary):
     if a_dictionary is None:
         return None
-    keys, values = list(a_dictionary.keys()), list(a_dictionary.values())
-    score = sorted(list(zip(keys, values)), key=lambda x: x[1], reverse=True)
+    high_score = 0
+    key = None
 
-    keys = dict(score).keys()
-    return list(keys)[0]
+    for k, v in a_dictionary.items():
+        if v > high_score:
+            high_score = v
+            key = k
+    return key
