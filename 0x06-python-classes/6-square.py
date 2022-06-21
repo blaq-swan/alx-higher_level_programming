@@ -93,4 +93,3 @@ class Square:
                 print()
             for b in range(x):
                 print("{}{}".format(" " * y[0], "#" * x))
-
