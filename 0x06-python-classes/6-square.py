@@ -5,10 +5,12 @@
 class Square:
 
     """Defines a square"""
+
     def __init__(self, size=0, position=(0, 0)):
         """
         Constructor
         """
+
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
         if size < 0:
@@ -62,7 +64,12 @@ class Square:
 
     @position.setter
     def position(self, value):
-        """"""
+        """
+        Setter Method for private position
+
+        Args:
+            value: position of value to set
+        """
         if isinstance(value, tuple) and len(value) == 2:
             if isinstance(value[0], int) and isinstance(value[1], int):
                 if value[0] >= 0 and value[1] >= 0:
