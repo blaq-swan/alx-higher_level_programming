@@ -3,6 +3,9 @@
 
 
 class Square:
+
+    def __str__(self):
+        self.my_print()
     """Defines a square"""
     def __init__(self, size=0, position=(0, 0)):
         """
@@ -84,11 +87,12 @@ class Square:
         """
         Public Instance method that prints a size by size square
         """
-        if self.__size == 0:
+        if x == 0:
             print()
         else:
             a, b = 0, 0
-            for a in range(self.__position[1]):
+            for a in range(y[1]):
                 print()
-            for b in range(self.__size):
+            for b in range(x):
                 print("{}{}".format(" " * y[0], "#" * x))
+
