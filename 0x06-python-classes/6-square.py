@@ -94,6 +94,7 @@ class Square:
         """
         if x == 0:
             print()
+            return
         else:
             a, b = 0, 0
             for a in range(y[1]):
