@@ -21,6 +21,3 @@ def text_indentation(text):
             )
 
     print(text, end="")
-
-
-# text_indentation("Bryan: Ronny? John. Mary.")
