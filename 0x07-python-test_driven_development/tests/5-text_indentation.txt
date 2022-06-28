@@ -1,0 +1,90 @@
+Doctest for 5-text_indentation
+==============================
+
+Usage:
+``text_indentation``
+Should print a text with 2 new lines after any of (:?.)
+--------------------------------------------------------
+
+Import module:
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Test empty func
+::
+	>>> text_indentation()
+	Traceback (most recent call last):
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
+	
+Test Normal case
+::
+	>>> text_indentation("Bryan: Ronny? John. Mary.")
+	Bryan:
+	<BLANKLINE>
+	Ronny?
+	<BLANKLINE>
+	John.
+	<BLANKLINE>
+	Mary.
+	<BLANKLINE>
+
+Test not string
+::
+	>>> text_indentation(1)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+Test with ?
+::
+	>>> text_indentation("?")
+	?
+	<BLANKLINE>
+
+Test with .
+::
+	>>> text_indentation(".")
+	.
+	<BLANKLINE>
+
+Test with :
+::
+	>>> text_indentation(":")
+	:
+	<BLANKLINE>
+
+Test Normal String
+::
+	>>> text_indentation("Hello World")
+	Hello World
+
+Test Empty String
+::
+	>>> text_indentation("")
+
+Test Newline
+::
+	>>> text_indentation("\n")
+	<BLANKLINE>
+
+Test all delimiters
+::
+	>>> text_indentation("?:.")
+	?
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+	.
+	<BLANKLINE>
+
+Test Space
+::
+	>>> text_indentation(" ")
+
+Test 10 spaces
+::
+	>>> text_indentation("          ")
+
+Test None
+::
+	>>> text_indentation(None)
+	Traceback (most recent call last):
+	TypeError: text must be a string

@@ -1,0 +1,119 @@
+The doctest for 2-matrix_divided test module
+==============================================================
+This test file only contains a function called ``matrix_divided(matrix, div)``.
+
+
+Usage
+======
+```matrix_divided(matrix, div)``` returns the division of each element of row in matrix by div.
+matrix is in the form [[a, b, c], [d, e, f]] --> a ..f are all numbers
+div is in the form (- ---- 0 ----- +) 
+
+Import the Module:
+::
+		>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Test Normal Case
+::
+		>>> matrix_divided([[10, 20, 30], [-5, -10, -15]], 2)
+		[[5.0, 10.0, 15.0], [-2.5, -5.0, -7.5]]
+
+Test negatice div
+::
+		>>> matrix_divided([[10, 20, 30], [-5, -10, -15]], -2)
+		[[-5.0, -10.0, -15.0], [2.5, 5.0, 7.5]]
+
+Test row as list
+::
+		>>> matrix_divided([10, 20, 30], 2)
+		Traceback (most recent call last):
+		TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test one element in a row
+::
+		>>> matrix_divided([[10]], 5)
+		[[2.0]]
+
+Test with infinity
+::
+		>>> matrix_divided([[10, 20, 30], [-5, -10, -15]], float('inf'))
+		[[0.0, 0.0, 0.0], [-0.0, -0.0, -0.0]]
+
+
+Test with NaN
+::
+		>>> matrix_divided([[10, 20, 30], [-5, -10, -15]], float('nan'))
+		[[nan, nan, nan], [nan, nan, nan]]
+
+Test ZeroDivison Error
+::
+		>>> matrix_divided([[10, 20, 30], [-5, -10, -15]], 0)
+		Traceback (most recent call last):
+		ZeroDivisionError: division by zero
+
+Test with unnamed variable
+::
+		>>> # matrix_divided(hello, 1)
+		TypeError: matrix must be a matrix (list of lists) of integers/floats
+		Traceback (most recent call last):
+		NameError: name 'hello' is not defined. Did you mean: 'help'?
+
+Test with None for Matrix
+::
+		>>> matrix_divided(None, 1)
+		Traceback (most recent call last):
+		TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test with empty Matrix
+::
+		>>> matrix_divided([[]], 10)
+		Traceback (most recent call last):
+		TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test with div as a string
+::
+		>>> matrix_divided([[10, 20, 30], [-5, -10, -15]], "1")
+		Traceback (most recent call last):
+		TypeError: div must be a number
+
+Test with item in row as string
+::
+		>>> matrix_divided([[10, 20, '30'], ['-5', -10, -15]], 2)
+		Traceback (most recent call last):
+		TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test with an empty list
+::
+		>>> matrix_divided([], 2)
+		Traceback (most recent call last):
+		TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test with div as list
+::
+		>>> matrix_divided([[10, 20, 30], [-5, -10, -15]], [1])
+		Traceback (most recent call last):
+		TypeError: div must be a number
+
+Test with div as tuple
+::
+		>>> matrix_divided([[10, 20, 30], [-5, -10, -15]], (1,))
+		Traceback (most recent call last):
+		TypeError: div must be a number
+
+Test with dive as byte
+::
+		>>> matrix_divided([[10, 20, 30], [-5, -10, -15]], b'1')
+		Traceback (most recent call last):
+		TypeError: div must be a number
+
+Test row as dict
+::
+		matrix_divided([{'a': 1}, {'b': 2}], 1)
+		Traceback (most recent call last):
+		TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test an empty function
+::
+		>>> matrix_divided()
+		Traceback (most recent call last):
+		TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'

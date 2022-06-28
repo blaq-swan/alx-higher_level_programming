@@ -1,0 +1,58 @@
+doctest ``4-print_square`` module
+=================================
+
+Usage:
+=======
+``print_square``
+----------------
+
+Import Module:
+	>>> print_square = __import__('4-print_square').print_square
+
+Test empty func:
+::
+	>>> print_square()
+	Traceback (most recent call last):
+	TypeError: print_square() missing 1 required positional argument: 'size'
+
+Test Normal Case
+::
+	>>> print_square(2)
+	##
+	##
+
+Test Negative
+::
+	>>> print_square(-2)
+	Traceback (most recent call last):
+	ValueError: size must be >= 0
+
+Test 0
+::
+	>>> print_square(0)
+
+
+Test non integer
+::
+	>>> print_square("Hello")
+	Traceback (most recent call last):
+	TypeError: size must be an integer
+
+Test infinty
+::
+	>>> print_square(int(float('inf')))
+	Traceback (most recent call last):
+	OverflowError: cannot convert float infinity to integer
+
+Test on Unnamed Variable
+::
+	>>> print_square(random_name)
+	Traceback (most recent call last):
+	NameError: name 'random_name' is not defined
+
+
+Test on None
+::
+	>>> print_square(None)
+	Traceback (most recent call last):
+	TypeError: size must be an integer
