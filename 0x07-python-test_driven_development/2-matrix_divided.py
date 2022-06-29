@@ -38,7 +38,4 @@ def matrix_divided(matrix, div):
             if not isinstance(num, (int, float)):
                 raise TypeError(typerr)
 
-
     return [[round(x / div, 2) for x in y] for y in matrix]
-
-print(matrix_divided([[1, 2], [1]], 2))
