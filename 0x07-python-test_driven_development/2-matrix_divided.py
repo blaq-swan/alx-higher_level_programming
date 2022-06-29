@@ -31,7 +31,7 @@ def matrix_divided(matrix, div):
     for row in matrix:
         if not isinstance(row, list) or len(row) == 0:
             raise TypeError(typerr)
-    if not all(len(x) == len(matrix[0]) for x in matrix):
+    if all(len(x) != len(matrix[0]) for x in matrix):
         raise TypeError("Each row of the matrix must have the same size")
 
     for num in row:
