@@ -18,7 +18,7 @@ Test Normal Case
 		>>> matrix_divided([[10, 20, 30], [-5, -10, -15]], 2)
 		[[5.0, 10.0, 15.0], [-2.5, -5.0, -7.5]]
 
-Test negatice div
+Test negative div
 ::
 		>>> matrix_divided([[10, 20, 30], [-5, -10, -15]], -2)
 		[[-5.0, -10.0, -15.0], [2.5, 5.0, 7.5]]
@@ -108,7 +108,7 @@ Test with dive as byte
 
 Test row as dict
 ::
-		matrix_divided([{'a': 1}, {'b': 2}], 1)
+		>>> matrix_divided([{'a': 1}, {'b': 2}], 1)
 		Traceback (most recent call last):
 		TypeError: matrix must be a matrix (list of lists) of integers/floats
 
@@ -117,3 +117,9 @@ Test an empty function
 		>>> matrix_divided()
 		Traceback (most recent call last):
 		TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+Test rows not equal in length:
+::
+		>>> matrix_divided([[1, 2], [1, 2, 3]], 2)
+		Traceback (most recent call last):
+		TypeError: Each row of the matrix must have the same size
