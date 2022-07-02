@@ -137,3 +137,8 @@ Test with normal case for float(-ve)
 ::
 	>>> matrix_mul([[1.0, 1.0], [1.0, 1.0]],[[-1.0, -1.0],[-1.0, -1.0]])
 	[[-2.0, -2.0], [-2.0, -2.0]]
+
+Test with normal case for int and float
+::
+	>>> matrix_mul([[1, 1], [1.0, 1.0]],[[-1, -1],[-1.0, -1.0]])
+	[[-2.0, -2.0], [-2.0, -2.0]]
