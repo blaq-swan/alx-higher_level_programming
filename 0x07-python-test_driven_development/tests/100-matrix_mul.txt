@@ -1,0 +1,139 @@
+============================================
+``100-matrix``
+--------------------------------------------------
+Usage: This test file is to test the file ```100-matrix_mul``` with the
+function ```matrix_mul```
+
+Importing the module
+::
+	>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+	
+Test empty function
+::
+	>>> matrix_mul()
+	Traceback (most recent call last):
+	TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+Test empty matrix
+::
+	>>> matrix_mul([[]], [[]])
+	Traceback (most recent call last):
+	ValueError: m_a can't be empty
+
+Test with m_b empty
+::
+	>>> matrix_mul([[1, 2], [3, 5]], [[]])
+	Traceback (most recent call last):
+	ValueError: m_b can't be empty
+	
+Test with m_a with one list and m_b empty
+::
+	>>> matrix_mul([[3, 5]], [[]])
+	Traceback (most recent call last):
+	ValueError: m_b can't be empty
+
+Test with m_a empty m_b one list
+::
+	>>> matrix_mul([[]], [[4, 5]])
+	Traceback (most recent call last):
+	ValueError: m_a can't be empty
+	
+Test with a list instead of matrix
+::
+	>>> matrix_mul([3, 5], [4, 5])
+	Traceback (most recent call last):
+	TypeError: m_a must be a list of lists
+	
+Test with b list instead of matrix
+::
+	>>> matrix_mul([[3, 5], [4, 5]], [3, 4])
+	Traceback (most recent call last):
+	TypeError: m_b must be a list of lists
+
+Test with matrix m_a of strings
+::
+	>>> matrix_mul([["Mary"]], [[3, 4]])
+	Traceback (most recent call last):
+	TypeError: m_a should contain only integers or floats
+	
+Test with matrix m_b of strings
+::
+	>>> matrix_mul([[3, 5], [4, 5]], [["Gorretty"]])
+	Traceback (most recent call last):
+	TypeError: m_b should contain only integers or floats
+	
+Test with matrix a with unequal matrix size
+::
+	>>> matrix_mul([[3, 5], [4]], [[3, 4],[5, 8]])
+	Traceback (most recent call last):
+	TypeError: each row of m_a must be of the same size
+	
+Test with matrix b with unequal matrix size
+::
+	>>> matrix_mul([[3, 5], [4, 6]], [[3],[5, 8]])
+	Traceback (most recent call last):
+	TypeError: each row of m_b must be of the same size
+
+Test with matrix  a of None
+::
+	>>> matrix_mul([[None]], [[3, 4],[5, 8]])
+	Traceback (most recent call last):
+	TypeError: m_a should contain only integers or floats
+
+Test with matrix  a of None
+::
+	>>> matrix_mul([[5, 6]], [[None]])
+	Traceback (most recent call last):
+	TypeError: m_b should contain only integers or floats
+
+Test with matrix  a of NaN
+::
+	>>> matrix_mul([[float('NaN')],[float('NaN')]], [[3, 4],[5, 8]])
+	Traceback (most recent call last):
+	ValueError: m_a and m_b can't be multiplied
+
+Test with matrices that can't be multiplied
+::
+	>>> # matrix_mul([[4, 8],[5, 6]], [[6],[5]])
+	Traceback (most recent call last):
+	ValueError: m_a and m_b can't be multiplied
+
+Test with matrix  b of NaN
+::
+	>>> matrix_mul([[4, 8],[5, 6]], [[float('NaN'), float('NaN')],[float('NaN'), float('NaN')]])
+	[[nan, nan], [nan, nan]]
+	
+Test with matrix  b of inf
+::
+	>>> matrix_mul([[4, 8],[5, 6]], [[float('inf'), float('inf')],[float('inf'), float('inf')]])
+	[[inf, inf], [inf, inf]]
+
+Test with normal case for int
+::
+	>>> matrix_mul([[1, 1], [1, 1]],[[1, 1],[1, 1]])
+	[[2, 2], [2, 2]]
+
+Test with normal case for int(-ve)
+::
+	>>> matrix_mul([[-1, -1], [-1, -1]],[[-1, -1],[-1, -1]])
+	[[2, 2], [2, 2]]
+
+Test with normal case for int(b -ve)
+::
+	>>> matrix_mul([[1, 1], [1, 1]],[[-1, -1],[-1, -1]])
+	[[-2, -2], [-2, -2]]
+
+Test with normal case for floats
+::
+	>>> matrix_mul([[1.0, 1.0], [1.0, 1.0]],[[1.0, 1.0],[1.0, 1.0]])
+	[[2.0, 2.0], [2.0, 2.0]]
+
+Test with normal case for float(-ve)
+::
+	>>> matrix_mul([[-1.0, -1.0], [-1.0, -1.0]],[[-1.0, -1.0],[-1.0, -1.0]])
+	[[2.0, 2.0], [2.0, 2.0]]
+
+Test with normal case for float(-ve)
+::
+	>>> matrix_mul([[1.0, 1.0], [1.0, 1.0]],[[-1.0, -1.0],[-1.0, -1.0]])
+	[[-2.0, -2.0], [-2.0, -2.0]]
