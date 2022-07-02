@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""lazy matrix"""
+"""lazy matrix """
 
 
 import numpy as np
