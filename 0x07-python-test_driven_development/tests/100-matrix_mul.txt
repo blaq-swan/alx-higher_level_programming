@@ -141,4 +141,4 @@ Test with normal case for float(-ve)
 Test with normal case for int and float
 ::
 	>>> matrix_mul([[1, 1,0], [-1, -1.0]],[[1, 1.0],[-1, -1.0]])
-	[[-2.0, -2.0], [-2.0, -2.0]]
+	[[0.0, 0.0], [0.0, 0.0]]
