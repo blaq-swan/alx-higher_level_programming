@@ -37,7 +37,7 @@ Test with a matrix
 Test with a non integers
 ::
 	>>> print_sorted(["1", '2'])
-	["1", "2"]
+	['1', '2']
 
 Test with sorted postive integers
 ::
