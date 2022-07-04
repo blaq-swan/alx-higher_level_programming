@@ -6,8 +6,8 @@ class MyList(list):
     """
     child class of list
     """
-
     def print_sorted(self):
         """prints sorted self which is a list"""
 
-        print(sorted(self))
+        new_list = sorted(self)
+        print(new_list)
