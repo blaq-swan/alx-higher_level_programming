@@ -22,8 +22,7 @@ Test for Extra arg
 Test for non list
 ::
 	>>> print_sorted("Hello")
-	Traceback (most recent call last):
-	TypeError: self must be a list
+	['H', 'e', 'l', 'l', 'o']
 
 Test for empty list
 ::
@@ -33,14 +32,12 @@ Test for empty list
 Test with a matrix
 ::
 	>>> print_sorted([[]])
-	Traceback (most recent call last):
-	TypeError: self must have integers only
+	[[]]
 
 Test with a non integers
 ::
 	>>> print_sorted(["1", '2'])
-	Traceback (most recent call last):
-	TypeError: self must have integers only
+	["1", "2"]
 
 Test with sorted postive integers
 ::
