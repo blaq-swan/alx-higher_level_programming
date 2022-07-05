@@ -4,14 +4,14 @@ How to use 7-base_gemotry
 
 thise module defines 7-base_gemotery
 
-
+::
 
 	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 	>>> bg = BaseGeometry()
 	>>> type(bg)
 	<class '7-base_geometry.BaseGeometry'>
 
-
+::
 
 testing the two functions 
 
@@ -21,12 +21,12 @@ all area:
     ...
     Exception: area() is not implemented
 
-
+::
 
 Integer validate with type integer:
 	>>> bg.integer_validator('age', 17)
 
-
+::
 
 Integer validate with type string:
 	>>> bg.integer_validator('age', '17')
@@ -34,7 +34,7 @@ Integer validate with type string:
 	...
 	TypeError: age must be an integer
 
-
+::
 
 Integer validate with type string:
 	>>> bg.integer_validator('name', 'ALX')
@@ -42,7 +42,7 @@ Integer validate with type string:
 	...
 	TypeError: name must be an integer
 
-
+::
 
 Integer validate with type bool:
 	>>> bg.integer_validator('name', True)
@@ -50,7 +50,7 @@ Integer validate with type bool:
 	...
 	TypeError: name must be an integer
 
-
+::
 
 Integer validate with type float:
 	>>> bg.integer_validator('name', 12.5)
@@ -58,7 +58,7 @@ Integer validate with type float:
 	...
 	TypeError: name must be an integer
 
-
+::
 
 Integer validate with inf:
 	>>> bg.integer_validator('name', float('inf'))
@@ -66,7 +66,7 @@ Integer validate with inf:
 	...
 	TypeError: name must be an integer
 
-
+::
 
 Integer validate with negative numbers:
 	>>> bg.integer_validator('age', -4)
@@ -74,7 +74,7 @@ Integer validate with negative numbers:
 	...
 	ValueError: age must be greater than 0
 
-
+::
 
 Integer validate with value 0:
 	>>> bg.integer_validator('age', 0)
@@ -82,20 +82,23 @@ Integer validate with value 0:
 	...
 	ValueError: age must be greater than 0
 
+::
 
+Area with a parameter:
+     >>> bg.area(12)
+     Traceback (most recent call last):
+     ...
+     TypeError: area() takes 1 positional argument but 2 were given
 
-Area with a parameter
-	>>> bg.area(12)
-	Traceback (most recent call last):
-	TypeError: BaseGeometry.area() takes 1 positional argument but 2 were given
-
+::
 
 Integer validate without arguments:
 	>>> bg.integer_validator()
 	Traceback (most recent call last):
-	TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+	...
+	TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
-
+::
 
 Integer validate with one argument:
 	>>> bg.integer_validator('name')
@@ -103,7 +106,7 @@ Integer validate with one argument:
 	...
 	TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-
+::
 
 Integer validate with extra argument:
 	>>> bg.integer_validator('name', 12, 'lol')
@@ -111,11 +114,11 @@ Integer validate with extra argument:
 	...
 	TypeError: integer_validator() takes 3 positional arguments but 4 were given
 
-
+::
 
 Module docstring:
        >>> doc = BaseGeometry = __import__('7-base_geometry').__doc__
        >>> len(doc) > 1
        True
 
-
+::
