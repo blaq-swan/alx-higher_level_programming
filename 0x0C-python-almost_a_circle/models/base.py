@@ -1,89 +1,67 @@
 #!/usr/bin/python3
-"""base module for the project"""
-import json
+'''Module for Base class.'''
+from json import dumps, loads
 import csv
 
 
 class Base:
-    """base class for the project"""
+    '''A representation of the base of our OOP hierarchy.'''
 
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """class constructor
-        Args:
-            id: int --> id instance attribute"""
-
-        if id is None:
+        '''Constructor.'''
+        if id is not None:
+            self.id = id
+        else:
             Base.__nb_objects += 1
-            id = Base.__nb_objects
-
-        self.id = id
+            self.id = Base.__nb_objects
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        '''json representation of list of dictionaries'''
-
-        if not list_dictionaries:
-            return str([])
-
-        return json.dumps(list_dictionaries)
-
-    @classmethod
-    def save_to_file(cls, list_objs):
-        '''class method to wrote json str rep of list_objs'''
-
-        file = f"{cls.__name__}.json"
-
-        with open(file, 'w') as jsonfile:
-            if list_objs is None:
-                jsonfile.write(str([]))
-            else:
-                lst_dicts = [x.to_dictionary() for x in list_objs]
-                jsonfile.write(Base.to_json_string(lst_dicts))
+        '''Jsonifies a dictionary so it's quite rightly and longer.'''
+        if list_dictionaries is None or not list_dictionaries:
+            return "[]"
+        else:
+            return dumps(list_dictionaries)
 
     @staticmethod
     def from_json_string(json_string):
-        '''returns the list of the JSON string representation json_string'''
-
-        if json_string is None or json_string == '[]':
+        '''Unjsonifies a dictionary.'''
+        if json_string is None or not json_string:
             return []
-        return json.loads(json_string)
+        return loads(json_string)
 
     @classmethod
-    def create(cls, **dictionary):
-        '''Returns an instance with all attributes already set'''
-
-        from models.rectangle import Rectangle
-        from models.square import Square
-
-        if cls is Rectangle:
-            dummy = Rectangle(1, 1)
-        elif cls is Square:
-            dummy = Square(1)
-        else:
-            dummy = None
-        dummy.update(**dictionary)
-
-        return dummy
+    def save_to_file(cls, list_objs):
+        '''Saves jsonified object to file.'''
+        if list_objs is not None:
+            list_objs = [o.to_dictionary() for o in list_objs]
+        with open("{}.json".format(cls.__name__), "w", encoding="utf-8") as f:
+            f.write(cls.to_json_string(list_objs))
 
     @classmethod
     def load_from_file(cls):
-        '''returns a list of instances'''
+        '''Loads string from file and unjsonifies.'''
+        from os import path
+        file = "{}.json".format(cls.__name__)
+        if not path.isfile(file):
+            return []
+        with open(file, "r", encoding="utf-8") as f:
+            return [cls.create(**d) for d in cls.from_json_string(f.read())]
 
-        file = f"{cls.__name__}.json"
-        new = []
-
-        try:
-            with open(file) as reader:
-                read = reader.read()
-        except FileNotFoundError:
-            return new
-
-        json_file = Base.from_json_string(read)
-        for o in json_file:
-            new.append(cls.create(**o))
-
+    @classmethod
+    def create(cls, **dictionary):
+        '''Loads instance from dictionary.'''
+        from models.rectangle import Rectangle
+        from models.square import Square
+        if cls is Rectangle:
+            new = Rectangle(1, 1)
+        elif cls is Square:
+            new = Square(1)
+        else:
+            new = None
+        new.update(**dictionary)
         return new
 
     @classmethod
