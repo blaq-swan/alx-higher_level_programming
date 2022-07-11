@@ -1,55 +1,49 @@
 #!/usr/bin/python3
-"""module for class Square"""
+'''Module for Square class.'''
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """child class of Rectangle"""
+    '''A Square class.'''
 
     def __init__(self, size, x=0, y=0, id=None):
-        '''constructor for class Square'''
-
+        '''Constructor.'''
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
-        '''string representation for the objects of Square'''
-
-        return '[Square] ({}) {}/{} - {}'.\
-            format(self.id, self.x, self.y, self.height)
+        '''Returns string info about this square.'''
+        return '[{}] ({}) {}/{} - {}'.\
+            format(type(self).__name__, self.id, self.x, self.y, self.width)
 
     @property
     def size(self):
-        '''getter method. Retrieves size'''
-
-        return self.height
+        '''Size of this square.'''
+        return self.width
 
     @size.setter
     def size(self, value):
-        '''sets width and height of Square'''
-
         self.width = value
         self.height = value
 
     def __update(self, id=None, size=None, x=None, y=None):
-        '''class private instance method for class Square'''
-
+        '''Internal method that updates instance attributes via */**args.'''
         if id is not None:
             self.id = id
+        if size is not None:
+            self.size = size
         if x is not None:
             self.x = x
         if y is not None:
             self.y = y
-        if size is not None:
-            self.size = size
 
     def update(self, *args, **kwargs):
-        '''updates instance attributes for Square'''
+        '''Updates instance attributes via no-keyword & keyword args.'''
         if args:
             self.__update(*args)
-        if kwargs:
+        elif kwargs:
             self.__update(**kwargs)
 
     def to_dictionary(self):
-        '''dictioanry representation of the class Square'''
-
-        return {'id': self.id, 'size': self.height, 'x': self.x, 'y': self.y}
+        '''Returns dictionary representation of this class.'''
+        return {"id": self.id, "size": self.width,
+                "x": self.x, "y": self.y}
