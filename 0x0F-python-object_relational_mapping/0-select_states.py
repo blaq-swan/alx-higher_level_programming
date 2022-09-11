@@ -2,14 +2,12 @@
 """mysqldb connector"""
 
 
-import sys
-import MySQLdb
-
+from sys import argv as args
+import MySQLdb as md
 
 if __name__ == "__main__":
-    database = MySQLdb.connect(
-        host="localhost", port=3306, user=sys.argv[1], passwd=sys.argv[2],
-        db=sys.argv[3])
-    connect = database.cursor()
-    connect.execute("SELECT * FROM `states`")
-    [print(state) for state in connect.fetchall()]
+    db = md.connect(host="localhost", port=3306,
+                    user=args[1], passwd=args[2], db=args[3])
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM state")
+    [print(state) for state in cursor.fetchall()]
